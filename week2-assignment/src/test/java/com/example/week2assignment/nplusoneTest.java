@@ -80,4 +80,29 @@ class NPlusOneTest {
             System.out.println(order.getMember().getName());
         }
     }
+
+    @Test
+    void entityGraphTest() {
+
+        Member member1 = new Member("철수");
+        Member member2 = new Member("영희");
+        Member member3 = new Member("민수");
+
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+        memberRepository.save(member3);
+
+        orderRepository.save(new Order("맥북", member1));
+        orderRepository.save(new Order("아이폰", member2));
+        orderRepository.save(new Order("에어팟", member3));
+
+        em.flush();
+        em.clear();
+
+        var orders = orderRepository.findAllWithEntityGraph();
+
+        for (Order order : orders) {
+            System.out.println(order.getMember().getName());
+        }
+    }
 }
