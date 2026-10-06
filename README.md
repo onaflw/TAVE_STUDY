@@ -101,11 +101,11 @@ GET /api/v1/products?page=0&size=10
 
 ### 3. 예외 처리 및 공통 응답
 
-- [ ] 상품을 찾을 수 없는 경우 예외 처리
-- [ ] Custom Exception 구현
-- [ ] `@RestControllerAdvice`를 이용한 전역 예외 처리
-- [ ] 공통 성공 응답 형식 적용
-- [ ] 공통 에러 응답 형식 적용
+- [x] 상품을 찾을 수 없는 경우 예외 처리
+- [x] Custom Exception 구현
+- [x] `@RestControllerAdvice`를 이용한 전역 예외 처리
+- [x] 공통 성공 응답 형식 적용
+- [x] 공통 에러 응답 형식 적용
 
 현재 존재하지 않는 상품을 조회할 경우 일반 예외가 발생하므로,
 이를 개선하여 적절한 HTTP Status와 에러 응답을 반환하도록 구현할 예정입니다.

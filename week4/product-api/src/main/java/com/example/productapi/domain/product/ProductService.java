@@ -3,6 +3,7 @@ package com.example.productapi.domain.product;
 import com.example.productapi.domain.product.dto.ProductCreateRequest;
 import com.example.productapi.domain.product.dto.ProductResponse;
 import com.example.productapi.domain.product.dto.ProductUpdateRequest;
+import com.example.productapi.domain.product.exception.ProductNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,7 +34,7 @@ public class ProductService {
     public ProductResponse getProduct(Long id) {
 
         Product product = productRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다."));
+                .orElseThrow(ProductNotFoundException::new);
 
         return new ProductResponse(
                 product.getId(),
@@ -61,8 +62,7 @@ public class ProductService {
             ProductUpdateRequest request
     ) {
         Product product = productRepository.findById(id)
-                .orElseThrow(() ->
-                        new IllegalArgumentException("상품을 찾을 수 없습니다."));
+                .orElseThrow(ProductNotFoundException::new);
 
         product.update(
                 request.name(),
@@ -74,8 +74,7 @@ public class ProductService {
     @Transactional
     public void deleteProduct(Long id) {
         Product product = productRepository.findById(id)
-                .orElseThrow(() ->
-                        new IllegalArgumentException("상품을 찾을 수 없습니다."));
+                .orElseThrow(ProductNotFoundException::new);
 
         productRepository.delete(product);
     }

@@ -3,6 +3,7 @@ package com.example.productapi.domain.product;
 import com.example.productapi.domain.product.dto.ProductCreateRequest;
 import com.example.productapi.domain.product.dto.ProductResponse;
 import com.example.productapi.domain.product.dto.ProductUpdateRequest;
+import com.example.productapi.global.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,31 +18,37 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<Long> create(
+    public ResponseEntity<ApiResponse<Long>> create(
             @RequestBody ProductCreateRequest request
     ) {
         Long productId = productService.create(request);
 
-        return ResponseEntity.ok(productId);
+        return ResponseEntity.ok(
+                new ApiResponse<>(true, productId)
+        );
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponse> getProduct(
+    public ResponseEntity<ApiResponse<ProductResponse>> getProduct(
             @PathVariable Long id
     ) {
         ProductResponse response = productService.getProduct(id);
 
-        return ResponseEntity.ok(response);
+        ApiResponse<ProductResponse> apiResponse =
+                new ApiResponse<>(true, response);
+
+        return ResponseEntity.ok(apiResponse);
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProductResponse>> getProducts(
+    public ResponseEntity<ApiResponse<Page<ProductResponse>>> getProducts(
             Pageable pageable
     ) {
-        Page<ProductResponse> response =
-                productService.getProducts(pageable);
+        Page<ProductResponse> response = productService.getProducts(pageable);
 
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(
+                new ApiResponse<>(true, response)
+        );
     }
 
     @PatchMapping("/{id}")
