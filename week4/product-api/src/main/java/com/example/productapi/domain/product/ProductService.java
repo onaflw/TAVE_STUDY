@@ -2,6 +2,7 @@ package com.example.productapi.domain.product;
 
 import com.example.productapi.domain.product.dto.ProductCreateRequest;
 import com.example.productapi.domain.product.dto.ProductResponse;
+import com.example.productapi.domain.product.dto.ProductUpdateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -52,5 +53,21 @@ public class ProductService {
                         product.getPrice(),
                         product.getStock()
                 ));
+    }
+
+    @Transactional
+    public void updateProduct(
+            Long id,
+            ProductUpdateRequest request
+    ) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() ->
+                        new IllegalArgumentException("상품을 찾을 수 없습니다."));
+
+        product.update(
+                request.name(),
+                request.price(),
+                request.stock()
+        );
     }
 }

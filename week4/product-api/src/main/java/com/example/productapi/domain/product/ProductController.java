@@ -2,6 +2,7 @@ package com.example.productapi.domain.product;
 
 import com.example.productapi.domain.product.dto.ProductCreateRequest;
 import com.example.productapi.domain.product.dto.ProductResponse;
+import com.example.productapi.domain.product.dto.ProductUpdateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -41,5 +42,15 @@ public class ProductController {
                 productService.getProducts(pageable);
 
         return ResponseEntity.ok(response);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Void> updateProduct(
+            @PathVariable Long id,
+            @RequestBody ProductUpdateRequest request
+    ) {
+        productService.updateProduct(id, request);
+
+        return ResponseEntity.ok().build();
     }
 }
