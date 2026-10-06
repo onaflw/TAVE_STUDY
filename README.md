@@ -145,8 +145,8 @@ DB 비밀번호와 같은 민감 정보는 코드에 직접 작성하지 않고 
 
 ### 5. Spring Boot Auto Configuration
 
-- [ ] Auto Configuration 동작 원리 학습
-- [ ] 현재 프로젝트에서 적용되는 자동 설정 확인
+- [x] Auto Configuration 동작 원리 학습
+- [x] 현재 프로젝트에서 적용되는 자동 설정 확인
 
 Spring Boot가 의존성과 설정을 기반으로 필요한 Bean과 설정을 자동으로 구성하는
 Auto Configuration의 동작 원리를 학습합니다.
@@ -155,8 +155,8 @@ Auto Configuration의 동작 원리를 학습합니다.
 
 ### 6. Actuator Health Check
 
-- [ ] Spring Boot Actuator 적용
-- [ ] Health Check Endpoint 구성
+- [x] Spring Boot Actuator 적용
+- [x] Health Check Endpoint 구성
 
 배포 이후 서버 상태를 확인할 수 있도록 Actuator를 적용합니다.
 
