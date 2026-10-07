@@ -170,12 +170,12 @@ GET /actuator/health
 
 ### 7. Redis Cache
 
-- [ ] Redis 연동
-- [ ] 상품 단건 조회 캐싱
-- [ ] Cache Hit / Miss 확인
-- [ ] 상품 수정 시 캐시 무효화
-- [ ] 상품 삭제 시 캐시 무효화
-- [ ] TTL 설정
+- [x] Redis 연동
+- [x] 상품 단건 조회 캐싱
+- [x] Cache Hit / Miss 확인
+- [x] 상품 수정 시 캐시 무효화
+- [x] 상품 삭제 시 캐시 무효화
+- [x] TTL 설정
 
 조회가 빈번한 상품 조회 API에 Redis Cache를 적용합니다.
 

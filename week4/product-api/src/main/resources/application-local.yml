@@ -11,6 +11,13 @@ spring:
       hibernate:
         format_sql: true
 
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
 logging:
   level:
     org.hibernate.SQL: debug
+    org.springframework.cache: trace
+    org.springframework.data.redis: debug

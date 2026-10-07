@@ -5,6 +5,8 @@ import com.example.productapi.domain.product.dto.ProductResponse;
 import com.example.productapi.domain.product.dto.ProductUpdateRequest;
 import com.example.productapi.domain.product.exception.ProductNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,7 @@ public class ProductService {
         return savedProduct.getId();
     }
 
+    @Cacheable(cacheNames = "products", key = "#id")
     @Transactional(readOnly = true)
     public ProductResponse getProduct(Long id) {
 
@@ -56,6 +59,7 @@ public class ProductService {
                 ));
     }
 
+    @CacheEvict(cacheNames = "products", key = "#id")
     @Transactional
     public void updateProduct(
             Long id,
@@ -71,6 +75,7 @@ public class ProductService {
         );
     }
 
+    @CacheEvict(cacheNames = "products", key = "#id")
     @Transactional
     public void deleteProduct(Long id) {
         Product product = productRepository.findById(id)
