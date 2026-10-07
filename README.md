@@ -211,58 +211,10 @@ Cache Evict 전략도 함께 적용합니다.
 
 ---
 
-## 📚 학습 내용
-
-이번 프로젝트를 통해 다음 내용을 학습하고 적용합니다.
-
-- REST API의 Resource Naming
-- API Versioning
-- HTTP Method와 Status Code
-- Spring Data JPA
-- JPA Persistence Context
-- Dirty Checking
-- Pagination
-- Exception Handling
-- Common Response Format
-- Spring Boot Auto Configuration
-- External Configuration
-- Spring Profile
-- Spring Boot Actuator
-- Redis Cache
-- Cache Hit / Miss
-- Cache Invalidation
-- TTL
-
----
-
-## 🚀 진행 순서
-
-```text
-상품 CRUD                         ✅
-    ↓
-Pagination                       ✅
-    ↓
-예외 처리 / 공통 응답 형식         ⬜
-    ↓
-local / prod Profile             ⬜
-    ↓
-Spring Boot Auto Configuration   ⬜
-    ↓
-Actuator Health Check            ⬜
-    ↓
-Redis Cache                      ⬜
-    ↓
-Cache Invalidation               ⬜
-    ↓
-REST API 명세 정리                ⬜
-```
-
----
-
 ## 📋 최종 과제
 
-- [ ] 캐싱이 적용된 API 서버 코드
-- [ ] `local / prod` Profile별 설정 파일
-- [ ] Actuator Health Check Endpoint
-- [ ] REST API 명세 정리
+- [x] 캐싱이 적용된 API 서버 코드
+- [x] `local / prod` Profile별 설정 파일
+- [x] Actuator Health Check Endpoint
+- [x] REST API 명세 정리 -> swagger
 - [ ] 코드 리뷰
